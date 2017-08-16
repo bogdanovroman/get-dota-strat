@@ -1,47 +1,102 @@
 .uk-container {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
-body{
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-text-size-adjust: 100%;
-}
-.header {
-    height: 70px;
 
-    &-link {
-        line-height: 70px;
-        padding: 0 15px;
-        &:first-child {
-            margin-left: -15px;
-            text-decoration: none;
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.1) !important;
-            }
-        }
-    }
+body {
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
 }
-.bg-dark-transparent{
-    background: rgba(0, 0, 0, 0.5);
+
+.header {
+	height: 70px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	&-link {
+		line-height: 70px;
+		padding: 0 15px;
+
+		&:first-child {
+			margin-left: -15px;
+			text-decoration: none;
+
+			&:hover {
+				background-color: rgba(255, 255, 255, 0.1) !important;
+			}
+		}
+	}
 }
+
+.bg-dark-transparent {
+	background: rgba(0, 0, 0, 0.5);
+}
+
 .bg-main {
-    background-image: url("../i/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+	background-image: url("../i/bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#root,
+.wrapper,
+body,
+html {
+	height: 100%;
+	overflow: hidden;
+}
+
+.wrapper {
+	padding-top: 70px;
 }
 
 .content {
-    //transform: translateZ(0);
+	height: 100%;
+	overflow: auto;
 }
 
 .editable {
-    height: 40px;
-    > *:not(input) {
-        display: inline-block;
-        cursor: pointer;
-        border-bottom: 1px dashed #a2a2a2;
-    }
+	height: 40px;
+
+	> *:not(input) {
+		display: inline-block;
+		cursor: pointer;
+		border-bottom: 1px dashed #a2a2a2;
+	}
 }
 
+.heroes-grid {
+	.hero {
+		position: relative;
+        cursor: pointer;
+        .icon {
+            &-attr {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                width: 20px;
+                height: 20px;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-position: center;
+                &.str{
+                    background-image: url(../i/icons/attr/str.png);
+                }
+                &.int{
+                    background-image: url(../i/icons/attr/int.png);
+                }
+                &.agi{
+                    background-image: url(../i/icons/attr/agi.png);
+                }
+            }
+        }
+	}
+}

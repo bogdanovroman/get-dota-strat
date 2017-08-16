@@ -23,8 +23,7 @@ export default class App extends Component {
             <Provider store={store}>
                 <Router history={history}>
                     <Route path="/login" component={Login}/>
-                    <Route path="/heroes" component={Heroes}/>
-                    <Route path="/" component={Main} onEnter={this.requireAuth}/>
+                    <Route path="/" component={Heroes} onEnter={this.requireAuth}/>
                 </Router>
             </Provider>
         );

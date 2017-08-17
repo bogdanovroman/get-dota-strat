@@ -11,7 +11,7 @@ export default class HeroItem extends Component {
 			src = 'public/i/heroes/' + scrName + '_lg.png',
 			heroAttr = hero.primary_attr.toLowerCase();
 
-		const imageStyle = {
+		const imageStyle = { 
 			width: 103,
 			height: 57
 		}

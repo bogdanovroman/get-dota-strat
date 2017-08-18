@@ -5,6 +5,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {Router, Route, browserHistory} from 'react-router';
 import Main from './main';
 import Heroes from './heroes';
+import Hero from './heroes/hero';
 import Login from './login';
 
 
@@ -23,7 +24,9 @@ export default class App extends Component {
             <Provider store={store}>
                 <Router history={history}>
                     <Route path="/login" component={Login}/>
-                    <Route path="/" component={Heroes} onEnter={this.requireAuth}/>
+                    <Route path="/" component={Main} onEnter={this.requireAuth}/>
+                    <Route path="/heroes" component={Heroes} onEnter={this.requireAuth}/>
+                    <Route path="/heroes/:id" component={Hero} onEnter={this.requireAuth}/>
                 </Router>
             </Provider>
         );

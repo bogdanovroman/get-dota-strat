@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 export default class HeroItem extends Component {
     _handleClick = () => {
@@ -6,20 +7,18 @@ export default class HeroItem extends Component {
     }
 
 	render() {
-		const hero = this.props.data,
+        console.log(process.env.NODE_ENV);
+        const hero = this.props.data,
 			scrName = hero.name.replace('npc_dota_hero_', ''),
 			src = 'public/i/heroes/' + scrName + '_lg.png',
 			heroAttr = hero.primary_attr.toLowerCase();
 
-		const imageStyle = { 
-			width: 103,
-			height: 57
-		}
-
 		return (
-			<div className="hero" onClick={this._handleClick}>
-				<img src={src} alt="" style={imageStyle}/>
-				<span className={"icon-attr " + heroAttr}></span>
+			<div className="hero">
+                <Link to={'/heroes/' + hero.id}>
+                    <img src={src} alt="" className=""/>
+                    <span className={"icon-attr " + heroAttr}></span>
+                </Link>
 			</div>
 		)
 	}

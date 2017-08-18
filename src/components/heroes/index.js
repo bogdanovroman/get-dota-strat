@@ -1,63 +1,44 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Header from '../header';
-import HeroItem from './hero_item';
-import className from 'classnames';
 import _ from 'lodash';
+import data from '../../api/heroes_data.json';
 
-import {getAllHeroes} from '../../api/get'
+import Wrapper from '../wrapper';
+import HeroItem from './hero_item';
+
+import {setHeroesData} from '../../actions/data';
 
 class Heroes extends Component {
-    _handleHeroItemClick = (hero) => {
-        console.log(hero);
-    }
 
-    componentDidMount() {
-        const {getAllHeroes, heroes} = this.props;
-        if (heroes.length === 0) getAllHeroes();
-    }
+	componentDidMount() {
+		this.props.setHeroesData(data);
+	}
 
-    render() {
+	render() {
+		const {utils, heroes} = this.props;
 
-        const {utils, heroes} = this.props;
+		const heroTemplate = _.map(heroes, (hero, index) => {
+			return (<HeroItem data={hero} key={index}/>)
+		})
 
-        const loadingClass = className({loader: true, 'active': utils.isLoading});
-
-        const heroTemplate = _.map(heroes, (hero, index) => {
-            return (
-                <div key={index}>
-                    <HeroItem data={hero} onClick={this._handleHeroItemClick}/>
-                </div>
-            )
-        })
-
-        return (
-            <div className="wrapper bg-main">
-                <div className={loadingClass}></div>
-                <Header/>
-                <div className="content uk-padding-large uk-padding-remove-horizontal">
-                    <div className="uk-container uk-container-large">
-                        <div is class="uk-grid-small uk-flex-center heroes-grid" uk-grid>
-                            {heroTemplate}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+		return (
+			<Wrapper isLoading={utils.isLoading}>
+				<div className="heroes-grid">
+					{heroTemplate}
+				</div>
+			</Wrapper>
+		)
+	}
 }
 
 const mapStateToProps = (state) => {
-    return {
-        utils: state.utils,
-        heroes: state.api.heroes
-    };
+	return {utils: state.utils, heroes: state.data.heroes};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllHeroes: () => dispatch(getAllHeroes())
-    };
+	return {
+		setHeroesData: (data) => dispatch(setHeroesData(data))
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Heroes);

@@ -1,11 +1,11 @@
 const INITIAL_STATE = {
-    heroes : []
+    heroes: []
 }
 
-export function api(state = INITIAL_STATE, action) {
+export function data(state = INITIAL_STATE, action) {
     switch (action.type) {
         case 'GET_ALL_HEROES_SUCCESS':
-            return {...state, heroes : action.array}
+            return {...state, heroes: action.array}
         default:
             return state;
     }

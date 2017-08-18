@@ -18,7 +18,8 @@ class Header extends Component {
                 <div className="uk-container uk-container-large uk-height-1-1">
                     <div className="uk-flex uk-flex-between	uk-width-1-1 uk-height-1-1 uk-flex-middle">
                         <div>
-                            <Link to="/" className="uk-button uk-button-text">Главная</Link>
+                            <Link to="/" className="uk-button uk-button-text">Home</Link>
+                            <Link to="/heroes" className="uk-button uk-button-text uk-margin-left">Heroes</Link>
                         </div>
                         {headerRightTemplate}
                     </div>
